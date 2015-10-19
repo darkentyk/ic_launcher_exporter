@@ -25,7 +25,7 @@
 **/
 
 /*
-	PSD IC_LAUNCHER EXPORTER by Francesco Benincasa
+	PSD IC_LAUNCHER EXPORTER by Francesco Benincasa 
 	
 	History 
 	-------
@@ -147,6 +147,12 @@ function main() {
             chkBoxDefaultRoot: Checkbox { text:'Psd folder is in project folder', value: true }, \
 			txtValue:EditText{ text:'' , characters: 80 , properties:{multiline:false,noecho:false}},\
 			btnBrowse:Button{ text:'...' }\
+        },\
+        folder2: Panel { \
+              orientation: 'row', \
+			alignChildren: 'left', \
+			text: ' Name file to export', \
+			txtValue2:EditText{ text:'' , characters: 20 , properties:{multiline:false,noecho:false}},\
         },\
         info : Group {  width: 100%,\
                         info: StaticText { width: 100%, text:'', characters: 120}\
@@ -285,7 +291,14 @@ function main() {
 			folder.create();
 		}
 		
-		var documentFile = documentPath +"/ic_launcher.png";	
+		 if(dlg.folder2.txtValue2.text.length >0)
+        {
+             var documentFile = documentPath +"/"+dlg.folder2.txtValue2.text+".png";	
+         }
+         else
+         {
+             var documentFile = documentPath +"/ic_launcher.png";	
+         }
 		var file = new File(documentFile);
 			
 		// Save image
